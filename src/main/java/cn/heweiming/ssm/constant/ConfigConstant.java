@@ -2,7 +2,7 @@ package cn.heweiming.ssm.constant;
 
 public class ConfigConstant {
 
-    public final static String SCAN_BASE_PACKAGES = "com.example.demo";
+    public final static String SCAN_BASE_PACKAGES = "cn.heweiming.ssm";
 
     public static final String SWAGGER2_API_DOC_PACKAGES = SCAN_BASE_PACKAGES + ".controller";
 
