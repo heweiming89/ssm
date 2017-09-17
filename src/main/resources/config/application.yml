@@ -1,0 +1,19 @@
+debug: false
+server:
+  port: 8080
+  context-path: /ssm
+spring:
+  thymeleaf:
+    mode: HTML
+    cache: false
+  profiles:
+    active:
+    - default
+    - @env@
+mybatis:
+  config-location: classpath:/config/mybatis-config.xml
+  mapper-locations:
+  - classpath:/mapper/*.xml
+  - classpath:/dao/*.xml
+flyway:
+  enabled: false
