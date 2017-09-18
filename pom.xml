@@ -4,6 +4,7 @@
     <groupId>cn.heweiming.project</groupId>
     <artifactId>ssm</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -37,10 +38,10 @@
 
         <spring-cloud-task.version>1.2.1.RELEASE</spring-cloud-task.version>
         <spring-cloud.version>Dalston.SR3</spring-cloud.version>
-        
+
         <spring-platform.version>Brussels-SR4</spring-platform.version>
         <spring-data.version>Ingalls-SR7</spring-data.version>
-        
+
         <shiro.version>1.4.0</shiro.version>
         <activiti.version>6.0.0</activiti.version>
         <cxf.version>3.1.12</cxf.version>
@@ -296,9 +297,31 @@
             <version>3.17</version>
         </dependency>
         <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.7.0</version>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+            <version>4.2.3.RELEASE</version><!--$NO-MVN-MAN-VER$ -->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-rsa</artifactId>
+            <version>1.0.5.RELEASE</version><!--$NO-MVN-MAN-VER$ -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bcpkix-jdk15on</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-jwt</artifactId>
+            <version>1.0.8.RELEASE</version><!--$NO-MVN-MAN-VER$ -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bcpkix-jdk15on</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
@@ -359,5 +382,4 @@
             </plugin>
         </plugins>
     </build>
-    <packaging>war</packaging>
 </project>
