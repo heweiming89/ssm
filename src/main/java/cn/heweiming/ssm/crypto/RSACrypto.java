@@ -45,7 +45,7 @@ public final class RSACrypto {
 		return new String(Base64.getEncoder().encode(key.getEncoded()));
 	}
 
-	public static PublicKey getPublickey(String publicKey) throws NoSuchAlgorithmException, InvalidKeySpecException {
+	public static PublicKey getPublicKey(String publicKey) throws NoSuchAlgorithmException, InvalidKeySpecException {
 		byte[] keyBytes = Base64.getDecoder().decode(publicKey.getBytes());
 		X509EncodedKeySpec keySpec = new X509EncodedKeySpec(keyBytes);
 		KeyFactory keyFactory = getKeyFactory();
@@ -84,7 +84,7 @@ public final class RSACrypto {
 	public static byte[] encrypt(byte[] plaintextBytes, String publicKey)
 			throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException,
 			BadPaddingException, InvalidKeySpecException {
-		return encrypt(plaintextBytes, getPublickey(publicKey));
+		return encrypt(plaintextBytes, getPublicKey(publicKey));
 	}
 
 	public static byte[] decrypt(byte[] ciphertextBytes, PrivateKey privateKey) throws NoSuchAlgorithmException,
