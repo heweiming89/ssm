@@ -28,3 +28,6 @@ mybatis:
   - classpath:/dao/*.xml
 flyway:
   enabled: false
+cryptography:
+  rsa:
+    private-key: MIIBVQIBADANBgkqhkiG9w0BAQEFAASCAT8wggE7AgEAAkEAoWsLp22/RBxSuKxXU4Iw6B3IaJUaTD1pYGTC1Vn1sJXfpW3+M4ZfoME6ExY8PzDXn+vnX2V315pa4GtXmg0ncQIDAQABAkB7eHg3n7kYDlowLJO3qvRh+LYdWT/+ZVM/ipOFwwQuB59H29TmFeYWdgJl+NEIUWZj9EwN8PMFYCIvK976r1cpAiEAy12MhoZN+iqeC3MDVYhdrpEi+XLOw2U32VhcWgB8UVMCIQDLMi6Di4rhFUsFOFcCcrWMSOAdJmGmvRxU5vtmhQ43qwIgJya+bBOlJXlY7elZhfj32Ci27AEvTyzIYL6DIQyg4mMCIQDGtN8pwtdgP6tqgmsMONLzSfzoZLVQElVXbb5hxjJeGwIhAMF2LCAolJ0KZEfYpMbGu8h+/tXN8n4Vd/yriyZ94myn
