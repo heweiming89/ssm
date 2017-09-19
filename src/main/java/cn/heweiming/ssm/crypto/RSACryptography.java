@@ -1,4 +1,4 @@
-package cn.heweiming.ssm.cryptography;
+package cn.heweiming.ssm.crypto;
 
 import java.math.BigInteger;
 import java.security.InvalidKeyException;
@@ -10,6 +10,7 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.RSAPrivateKeySpec;
 import java.security.spec.RSAPublicKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
@@ -46,11 +47,17 @@ public final class RSACryptography {
         return keyFactory.generatePublic(keySpec);
     }
 
-    public static PublicKey getPublicKey(BigInteger modulus, BigInteger exponent) throws Exception {
+    public static PublicKey getPublicKey(BigInteger modulus, BigInteger exponent) throws NoSuchAlgorithmException, InvalidKeySpecException {
         RSAPublicKeySpec publicKeySpec = new RSAPublicKeySpec(modulus, exponent);
         KeyFactory keyFactory = getKeyFactory();
         return keyFactory.generatePublic(publicKeySpec);
     }
+    
+    public static PrivateKey getPrivateKey(BigInteger modulus, BigInteger exponent) throws NoSuchAlgorithmException, InvalidKeySpecException {  
+        RSAPrivateKeySpec privateKeySpec=new RSAPrivateKeySpec(modulus, exponent);  
+        KeyFactory keyFactory=getKeyFactory();  
+        return keyFactory.generatePrivate(privateKeySpec);  
+    } 
 
     public static PrivateKey getPrivateKey(String privateKey) throws NoSuchAlgorithmException, InvalidKeySpecException {
         byte[] keyBytes = Base64.getDecoder().decode(privateKey.getBytes());
@@ -63,6 +70,7 @@ public final class RSACryptography {
             NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
         Cipher cipher = Cipher.getInstance(ALGORITHM);
         cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+        
         return cipher.doFinal(plaintextBytes);
     }
 
@@ -76,6 +84,7 @@ public final class RSACryptography {
             NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
         Cipher cipher = Cipher.getInstance(ALGORITHM);
         cipher.init(Cipher.DECRYPT_MODE, privateKey);
+        
         return cipher.doFinal(ciphertextBytes);
     }
 
