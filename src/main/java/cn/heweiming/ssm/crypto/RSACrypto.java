@@ -21,7 +21,7 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-public final class RSACryptography {
+public final class RSACrypto {
 
 	private static final String ALGORITHM = "RSA";
 
