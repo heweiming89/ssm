@@ -12,11 +12,11 @@ import org.springframework.validation.annotation.Validated;
 import cn.heweiming.ssm.crypto.RSACryptography;
 
 @Component
-@ConfigurationProperties(prefix = RSACryptographyProperties.CONFIG_PROPERTIES_PREFIX)
+@ConfigurationProperties(prefix = RSACryptoProperties.CONFIG_PROPERTIES_PREFIX)
 @Validated
-public class RSACryptographyProperties {
+public class RSACryptoProperties {
 
-    protected final static String CONFIG_PROPERTIES_PREFIX = "cryptography.rsa";
+    protected final static String CONFIG_PROPERTIES_PREFIX = "crypto.rsa";
 
     @NotEmpty(message = "RSA密钥不能为空")
     private String privateKey;
