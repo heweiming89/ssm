@@ -10,14 +10,14 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
-import cn.heweiming.ssm.crypto.RSACrypto;
+import cn.heweiming.ssm.encryption.RSAEncryption;
 
 @Component
-@ConfigurationProperties(prefix = RSACryptoProperties.CONFIG_PROPERTIES_PREFIX)
+@ConfigurationProperties(prefix = RSAEncryptionProperties.CONFIG_PROPERTIES_PREFIX)
 @Validated
-public class RSACryptoProperties {
+public class RSAEncryptionProperties {
 
-	protected final static String CONFIG_PROPERTIES_PREFIX = "crypto.rsa";
+	protected final static String CONFIG_PROPERTIES_PREFIX = "encryption.rsa";
 
 	private String publicKey;
 
@@ -41,11 +41,11 @@ public class RSACryptoProperties {
 	}
 
 	public RSAPublicKey parsePublicKey() throws NoSuchAlgorithmException, InvalidKeySpecException {
-		return (RSAPublicKey) RSACrypto.getPublicKey(this.publicKey);
+		return (RSAPublicKey) RSAEncryption.getPublicKey(this.publicKey);
 	}
 
 	public RSAPrivateKey parsePrivateKey() throws NoSuchAlgorithmException, InvalidKeySpecException {
-		return (RSAPrivateKey) RSACrypto.getPrivateKey(this.privateKey);
+		return (RSAPrivateKey) RSAEncryption.getPrivateKey(this.privateKey);
 	}
 
 }

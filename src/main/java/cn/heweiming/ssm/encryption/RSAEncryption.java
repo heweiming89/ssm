@@ -1,4 +1,4 @@
-package cn.heweiming.ssm.crypto;
+package cn.heweiming.ssm.encryption;
 
 import java.math.BigInteger;
 import java.security.InvalidKeyException;
@@ -21,7 +21,7 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-public final class RSACrypto {
+public final class RSAEncryption {
 
 	private static final String ALGORITHM = "RSA";
 
