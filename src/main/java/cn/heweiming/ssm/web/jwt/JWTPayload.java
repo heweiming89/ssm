@@ -36,11 +36,11 @@ public class JWTPayload {
     @JsonProperty(AUDIENCE)
     private List<String> audience;// 接口jwt的一方
 
-    @JsonProperty(EXPIRES_AT)
-    private LocalDateTime expiresAt;// jwt的过期时间，这个过期时间必须要大于签发时间
-
     @JsonProperty(ISSUED_AT)
     private LocalDateTime issuedAt;// jwt的签发时间
+    
+    @JsonProperty(EXPIRES_AT)
+    private LocalDateTime expiresAt;// jwt的过期时间，这个过期时间必须要大于签发时间
 
     @JsonProperty(NOT_BEFORE)
     private LocalDateTime notBefore;// 定义在什么时间之前，该jwt都是不可用的.

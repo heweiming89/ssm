@@ -3,6 +3,8 @@ server:
   port: 8080
   context-path: /ssm
 spring:
+  application:
+    name: ssm
   thymeleaf:
     mode: HTML
     cache: false
