@@ -14,9 +14,6 @@ spring:
       max-wait: -1
       max-idle: 8
       min-idle: 0
-  thymeleaf:
-    mode: HTML
-    cache: false
 flyway:
   enabled: false
 encryption:
