@@ -1,10 +1,11 @@
-package cn.heweiming.ssm.service;
+package cn.heweiming.ssm.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 
-public interface BaseService<R, E> {
+public interface BaseMapper<R, E> {
 
     long countByExample(E example);
 
@@ -22,9 +23,9 @@ public interface BaseService<R, E> {
 
     R selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(R record, E example);
+    int updateByExampleSelective(@Param("record") R record, @Param("example") E example);
 
-    int updateByExample(R record, E example);
+    int updateByExample(@Param("record") R record, @Param("example") E example);
 
     int updateByPrimaryKeySelective(R record);
 

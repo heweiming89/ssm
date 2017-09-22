@@ -1,84 +1,73 @@
 package cn.heweiming.ssm.service.impl;
 
-import java.util.List;
-
+import cn.heweiming.ssm.mapper.BaseMapper;
+import cn.heweiming.ssm.service.BaseService;
 import org.apache.ibatis.session.RowBounds;
 
-import cn.heweiming.ssm.model.User;
-import cn.heweiming.ssm.service.BaseService;
+import java.util.List;
 
-public class BaseServiceImpl<R, E, M> implements BaseService<R, E> {
+public class BaseServiceImpl<R, E, M extends BaseMapper<R, E>> implements BaseService<R, E> {
 
-	@Override
-	public long countByExample(E example) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    protected M mapper;
 
-	@Override
-	public int deleteByExample(E example) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public long countByExample(E example) {
+        return mapper.countByExample(example);
+    }
 
-	@Override
-	public int deleteByPrimaryKey(Integer id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int deleteByExample(E example) {
+        return mapper.deleteByExample(example);
+    }
 
-	@Override
-	public int insert(R record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return mapper.deleteByPrimaryKey(id);
+    }
 
-	@Override
-	public int insertSelective(R record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int insert(R record) {
+        return mapper.insert(record);
+    }
 
-	@Override
-	public List<R> selectByExampleWithRowbounds(E example, RowBounds rowBounds) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public int insertSelective(R record) {
+        return mapper.insertSelective(record);
+    }
 
-	@Override
-	public List<R> selectByExample(E example) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public List<R> selectByExampleWithRowbounds(E example, RowBounds rowBounds) {
+        return mapper.selectByExampleWithRowbounds(example, rowBounds);
+    }
 
-	@Override
-	public User selectByPrimaryKey(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public List<R> selectByExample(E example) {
+        return mapper.selectByExample(example);
+    }
 
-	@Override
-	public int updateByExampleSelective(R record, E example) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public R selectByPrimaryKey(Integer id) {
+        return mapper.selectByPrimaryKey(id);
+    }
 
-	@Override
-	public int updateByExample(R record, E example) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int updateByExampleSelective(R record, E example) {
+        return mapper.updateByExampleSelective(record, example);
+    }
 
-	@Override
-	public int updateByPrimaryKeySelective(R record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int updateByExample(R record, E example) {
+        return mapper.updateByExample(record, example);
+    }
 
-	@Override
-	public int updateByPrimaryKey(R record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int updateByPrimaryKeySelective(R record) {
+        return mapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public int updateByPrimaryKey(R record) {
+        return mapper.updateByPrimaryKey(record);
+    }
 
 }
