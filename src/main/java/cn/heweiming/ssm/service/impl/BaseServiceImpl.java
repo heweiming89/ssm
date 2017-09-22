@@ -1,13 +1,16 @@
 package cn.heweiming.ssm.service.impl;
 
+import java.util.List;
+
+import org.apache.ibatis.session.RowBounds;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import cn.heweiming.ssm.mapper.BaseMapper;
 import cn.heweiming.ssm.service.BaseService;
-import org.apache.ibatis.session.RowBounds;
-
-import java.util.List;
 
 public class BaseServiceImpl<R, E, M extends BaseMapper<R, E>> implements BaseService<R, E> {
 
+	@Autowired
     protected M mapper;
 
     @Override
