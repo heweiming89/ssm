@@ -39,13 +39,13 @@ import cn.heweiming.ssm.web.interceptor.AuthorizationInterceptor;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
-@Import(value = {JacksonConfig.class, RestTemplateConfig.class, Swagger2Config.class, ServletConfig.class})
+@Import(value = { JacksonConfig.class, Swagger2Config.class, ServletConfig.class })
 @ServletComponentScan(basePackages = ConfigConstant.LISTENER_BASE_PACKAGES)
 @EnableWebMvc // 启用 Spring MVC
-@ComponentScan(basePackages = {ConfigConstant.SCAN_BASE_PACKAGES}, useDefaultFilters = false, includeFilters = {
+@ComponentScan(basePackages = { ConfigConstant.SCAN_BASE_PACKAGES }, useDefaultFilters = false, includeFilters = {
         @Filter(type = FilterType.ANNOTATION, value = Controller.class),
         @Filter(type = FilterType.ANNOTATION, value = RestController.class),
-        @Filter(type = FilterType.ANNOTATION, value = ControllerAdvice.class)})
+        @Filter(type = FilterType.ANNOTATION, value = ControllerAdvice.class) })
 @EnableSwagger2
 public class WebContextConfig extends WebMvcConfigurerAdapter {
 
@@ -58,7 +58,6 @@ public class WebContextConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
     private XmlMapper xmlMapper;
-
 
     @Bean /* 文件上传配置 */
     public MultipartResolver multipartResolver() {
@@ -107,22 +106,22 @@ public class WebContextConfig extends WebMvcConfigurerAdapter {
         registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowCredentials(true).maxAge(TimeUnit.DAYS.toMillis(1));
     }
-    
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
-		final String staticPattern = "/static/**";
-		final String staticLocations = "classpath:/static/";
-		if (!registry.hasMappingForPattern(staticPattern)) {
-			registry.addResourceHandler(staticPattern).addResourceLocations(staticLocations);
-		}
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
-		final String webjarsPattern = "/webjars/**";
-		final String webjarsLocations = "classpath:/META-INF/resources/webjars/";
-		if (!registry.hasMappingForPattern(webjarsPattern)) {
-			registry.addResourceHandler(webjarsPattern).addResourceLocations(webjarsLocations);
-		}
-		
-	} 
+        final String staticPattern = "/static/**";
+        final String staticLocations = "classpath:/static/";
+        if (!registry.hasMappingForPattern(staticPattern)) {
+            registry.addResourceHandler(staticPattern).addResourceLocations(staticLocations);
+        }
+
+        final String webjarsPattern = "/webjars/**";
+        final String webjarsLocations = "classpath:/META-INF/resources/webjars/";
+        if (!registry.hasMappingForPattern(webjarsPattern)) {
+            registry.addResourceHandler(webjarsPattern).addResourceLocations(webjarsLocations);
+        }
+
+    }
 
 }
