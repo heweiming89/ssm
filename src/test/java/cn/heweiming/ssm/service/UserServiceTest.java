@@ -13,12 +13,9 @@ public class UserServiceTest extends SSMApplicationTest {
 
 	@Test
 	public void testSelectByPrimaryKey() {
-		try {
+		for (int i = 0; i < 10; i++) {
 			User user = userService.selectByPrimaryKey(1);
 			System.out.println(user);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 

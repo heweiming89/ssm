@@ -1,7 +1,5 @@
 package cn.heweiming.ssm.config;
 
-import java.lang.reflect.Method;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
@@ -30,7 +28,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
 @EnableCaching // 启用缓存，这个注解很重要；
-public class RedisCacheConfig extends CachingConfigurerSupport {
+public class CacheConfig extends CachingConfigurerSupport {
 
     @Autowired
     private RedisConnectionFactory redisConnectionFactory;
