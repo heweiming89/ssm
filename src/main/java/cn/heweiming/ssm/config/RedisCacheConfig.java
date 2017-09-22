@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.interceptor.CacheErrorHandler;
+import org.springframework.cache.interceptor.CacheResolver;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +22,7 @@ import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -32,43 +35,36 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
     @Autowired
     private RedisConnectionFactory redisConnectionFactory;
 
-    /**
-     * 生成key的策略
-     *
-     * @return
-     */
     @Bean
-    public KeyGenerator keyGenerator() {
-        return new KeyGenerator() {
-            @Override
-            public Object generate(Object target, Method method, Object... params) {
-                StringBuilder sb = new StringBuilder();
-                sb.append(target.getClass().getName());
-                sb.append(method.getName());
-                for (Object obj : params) {
-                    sb.append(obj.toString());
-                }
-                return sb.toString();
-            }
-        };
+    @Override
+    public CacheManager cacheManager() {
+        RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate());
+        return cacheManager;
     }
 
-    /**
-     * 管理缓存
-     *
-     * @param redisTemplate
-     * @return
-     */
+    @Override
+    public KeyGenerator keyGenerator() {
+        // TODO Auto-generated method stub
+        return super.keyGenerator();
+    }
+
+    @Override
+    public CacheResolver cacheResolver() {
+        // TODO Auto-generated method stub
+        return super.cacheResolver();
+    }
+
+    @Override
+    public CacheErrorHandler errorHandler() {
+        // TODO Auto-generated method stub
+        return super.errorHandler();
+    }
+
     @Bean
-    public CacheManager cacheManager() {
-        RedisCacheManager rcm = new RedisCacheManager(redisTemplate());
-        // 设置缓存过期时间
-        // rcm.setDefaultExpiration(60);//秒
-        // 设置value的过期时间
-        // Map<String, Long> map = new HashMap<String, Long>();
-        // map.put("test", 60L);
-        // rcm.setExpires(map);
-        return rcm;
+    public RedisAtomicLong redisAtomicLong() {
+        RedisAtomicLong atomicLong = new RedisAtomicLong("APPLICATION_COUNTER_NAME", redisConnectionFactory);
+        atomicLong.incrementAndGet();
+        return atomicLong;
     }
 
     @Bean
@@ -87,42 +83,62 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
         JdkSerializationRedisSerializer jdkSerializationRedisSerializer = new JdkSerializationRedisSerializer();
 
         redisTemplate.setKeySerializer(stringRedisSerializer);
-        redisTemplate.setValueSerializer(stringRedisSerializer);
+//        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
         redisTemplate.setHashKeySerializer(stringRedisSerializer);
-        redisTemplate.setHashValueSerializer(jdkSerializationRedisSerializer);
-        redisTemplate.afterPropertiesSet();
+//        redisTemplate.setHashValueSerializer(stringRedisSerializer);
+//        redisTemplate.afterPropertiesSet();
 
         return redisTemplate;
     }
 
+    /**
+     * 操作Redis String（或者Value）类型数据
+     * @return
+     */
     @Bean
-    public ZSetOperations<String, Object> zSetOperations() {
-        ZSetOperations<String, Object> zSetOperations = redisTemplate().opsForZSet();
-        return zSetOperations;
+    public ValueOperations<String, Object> valueOperations() {
+        ValueOperations<String, Object> valueOperations = redisTemplate().opsForValue();
+        return valueOperations;
     }
 
-    @Bean
-    public SetOperations<String, Object> setOperations() {
-        SetOperations<String, Object> setOperations = redisTemplate().opsForSet();
-        return setOperations;
-    }
-
+    /**
+     * 操作Redis List类型数据
+     * @return
+     */
     @Bean
     public ListOperations<String, Object> listOperations() {
         ListOperations<String, Object> listOperations = redisTemplate().opsForList();
         return listOperations;
     }
 
+    /**
+     * 操作Redis Set类型数据
+     * @return
+     */
+    @Bean
+    public SetOperations<String, Object> setOperations() {
+        SetOperations<String, Object> setOperations = redisTemplate().opsForSet();
+        return setOperations;
+    }
+
+    /**
+     * 操作Redis ZSet（或者Sorted Set）类型数据
+     * @return
+     */
+    @Bean
+    public ZSetOperations<String, Object> zSetOperations() {
+        ZSetOperations<String, Object> zSetOperations = redisTemplate().opsForZSet();
+        return zSetOperations;
+    }
+
+    /**
+     * 操作Redis Hash类型数据
+     * @return
+     */
     @Bean
     public HashOperations<String, Object, Object> hashOperations() {
         HashOperations<String, Object, Object> hashOperations = redisTemplate().opsForHash();
         return hashOperations;
-    }
-
-    @Bean
-    public ValueOperations<String, Object> valueOperations() {
-        ValueOperations<String, Object> valueOperations = redisTemplate().opsForValue();
-        return valueOperations;
     }
 
 }
