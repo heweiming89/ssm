@@ -1,4 +1,4 @@
-package cn.heweiming.ssm.mapper;
+package cn.heweiming.ssm.mybatis.base;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;

@@ -1,6 +1,6 @@
 package cn.heweiming.ssm.service.impl;
 
-import cn.heweiming.ssm.mapper.BaseMapper;
+import cn.heweiming.ssm.mybatis.base.BaseMapper;
 import cn.heweiming.ssm.service.BaseService;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;

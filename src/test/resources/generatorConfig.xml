@@ -5,15 +5,15 @@
 
     <properties resource="mbg.properties"/>
 
-    <context id="MyBatis3" targetRuntime="MyBatis3"
-             defaultModelType="flat">
+    <context id="MyBatis3" targetRuntime="cn.heweiming.ssm.mybatis.generator.GenericIntrospectedTable" defaultModelType="flat">
 
         <property name="javaFileEncoding" value="UTF-8"/>
 
-        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
-            <property name="searchString" value="Example"/>
-            <property name="replaceString" value="Criteria"/>
-        </plugin>
+        <!--         <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin"> -->
+        <!--             <property name="searchString" value="Example"/> -->
+        <!--             <property name="replaceString" value="Criteria"/> -->
+        <!--         </plugin> -->
+
         <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin"/>
         <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
