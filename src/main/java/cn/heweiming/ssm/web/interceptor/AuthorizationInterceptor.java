@@ -25,8 +25,13 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
 
-        String currentUser = JwtUserUtils.getCurrentUser(request);
-        logger.debug("currentUser: {}", currentUser);
+        String currentUser;
+		try {
+			currentUser = JwtUserUtils.getCurrentUser(request);
+			logger.debug("currentUser: {}", currentUser);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
 
         return super.preHandle(request, response, handler);
     }

@@ -8,7 +8,6 @@ import org.springframework.cache.interceptor.CacheErrorHandler;
 import org.springframework.cache.interceptor.CacheResolver;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.HashOperations;
@@ -31,7 +30,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @version 1.0.0
  * @description 
  */
-@Configuration
 @EnableCaching // 启用缓存，这个注解很重要；
 public class CacheConfig extends CachingConfigurerSupport {
 

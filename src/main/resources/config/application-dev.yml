@@ -1,3 +1,4 @@
+debug: true
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -16,6 +17,9 @@ spring:
       min-idle: 0
 flyway:
   enabled: false
+management:
+  security:
+    enabled: false
 encryption:
   rsa:
     public-key: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCIIk6vwWanf+roZwaOwbkSi7MVEE1Ot9i9AyXm1uZKPQpmG0MI0qv/zqhsWQQ6uuUNnNAop1JS8tEuL35BYW1xCfnbkwSyTa/PLQlZwlOwLRUIxiJkGesJkNeeKOQEBVtSPcnBhvD3UELRLSv/qPIlUeC7PV1Uf78NRQeoNSh8rwIDAQAB
