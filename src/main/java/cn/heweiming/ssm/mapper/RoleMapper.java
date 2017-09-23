@@ -5,8 +5,7 @@ import cn.heweiming.ssm.model.RoleExample;
 import cn.heweiming.ssm.mybatis.base.BaseMapper;
 
 /**
- * @createdBy MyBatis Generator
- * @createdDate 2017-09-23 17:10:49
+ * @author MyBatis Generator  2017-09-23 23:42:48
  */
 public interface RoleMapper extends BaseMapper<Role, RoleExample> {
 }

@@ -21,7 +21,7 @@ import org.mybatis.generator.config.PropertyRegistry;
 /**
  * @author heweiming  2017年9月23日 下午5:17:25
  * @version 1.0.0
- * @description 
+ * @description
  */
 public class GenericIntrospectedTable extends IntrospectedTableMyBatis3Impl {
 
@@ -68,8 +68,7 @@ public class GenericIntrospectedTable extends IntrospectedTableMyBatis3Impl {
                 api.addImportedTypes(new LinkedHashSet<>(Arrays.asList(model, example, baseMapper)));
 
                 api.addJavaDocLine("/**");
-                api.addJavaDocLine(" * @createdBy MyBatis Generator");
-                api.addJavaDocLine(" * @createdDate " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+                api.addJavaDocLine(" * @author MyBatis Generator  " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
                 api.addJavaDocLine(" */");
 
                 GeneratedJavaFile gjf = new GeneratedJavaFile(api,
