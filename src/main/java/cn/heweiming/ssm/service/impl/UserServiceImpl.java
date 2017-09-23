@@ -10,13 +10,13 @@ import cn.heweiming.ssm.service.UserService;
 
 @Service
 public class UserServiceImpl extends BaseServiceImpl<User, UserExample, BaseMapper<User, UserExample>>
-		implements UserService {
+        implements UserService {
 
-	@Override
-	@Cacheable(value = "user")
-	public User selectByPrimaryKey(Integer id) {
-		// TODO Auto-generated method stub
-		return super.selectByPrimaryKey(id);
-	}
+    @Override
+    @Cacheable(value = "user")
+    public User selectByPrimaryKey(Integer id) {
+        // TODO Auto-generated method stub
+        return super.selectByPrimaryKey(id);
+    }
 
 }

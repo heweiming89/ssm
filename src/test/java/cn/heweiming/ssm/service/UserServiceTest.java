@@ -8,15 +8,15 @@ import cn.heweiming.ssm.model.User;
 
 public class UserServiceTest extends SSMApplicationTest {
 
-	@Autowired
-	private UserService userService;
+    @Autowired
+    private UserService userService;
 
-	@Test
-	public void testSelectByPrimaryKey() {
-		for (int i = 0; i < 10; i++) {
-			User user = userService.selectByPrimaryKey(1);
-			System.out.println(user);
-		}
-	}
+    @Test
+    public void testSelectByPrimaryKey() {
+        for (int i = 0; i < 10; i++) {
+            User user = userService.selectByPrimaryKey(1);
+            System.out.println(user);
+        }
+    }
 
 }

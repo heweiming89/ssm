@@ -6,7 +6,7 @@ import cn.heweiming.ssm.mybatis.base.BaseMapper;
 
 /**
  * @createdBy MyBatis Generator
- * @createdDate 2017-09-23 16:56:17
+ * @createdDate 2017-09-23 17:10:49
  */
 public interface MenuMapper extends BaseMapper<Menu, MenuExample> {
 }

@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import cn.heweiming.ssm.web.AjaxResponse;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:14:58
+ * @version 1.0.0
+ * @description 
+ */
 @Controller
 public class NotFoundErrorController implements ErrorController {
     /**
@@ -27,7 +32,7 @@ public class NotFoundErrorController implements ErrorController {
     public String getErrorPath() {
         return ERROR_PATH;
     }
-    
+
     @RequestMapping(value = ERROR_PATH)
     @ResponseBody
     @ResponseStatus(value = HttpStatus.NOT_FOUND)

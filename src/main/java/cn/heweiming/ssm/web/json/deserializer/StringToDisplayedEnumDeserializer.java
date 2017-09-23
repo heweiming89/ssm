@@ -13,8 +13,13 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 
 import cn.heweiming.ssm.enums.DisplayedEnum;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:19:32
+ * @version 1.0.0
+ * @description 
+ */
 public class StringToDisplayedEnumDeserializer<T extends DisplayedEnum<?>> extends JsonDeserializer<T> {
-    
+
     /**
      * Logger for this class
      */
@@ -41,7 +46,7 @@ public class StringToDisplayedEnumDeserializer<T extends DisplayedEnum<?>> exten
         if (displayedEnum == null) {
             logger.warn("枚举类{} value为{}的枚举不存在", enumType.getSimpleName(), source);
         }
-        return displayedEnum ;
+        return displayedEnum;
     }
-    
+
 }

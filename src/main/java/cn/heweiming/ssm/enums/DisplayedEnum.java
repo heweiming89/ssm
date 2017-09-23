@@ -6,9 +6,14 @@ import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Field;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:16:51
+ * @version 1.0.0
+ * @description 
+ */
 public interface DisplayedEnum<T extends Enum<T>> extends java.io.Serializable {
-    
-    public static final Logger logger = LoggerFactory.getLogger(DisplayedEnum.class);
+
+    Logger logger = LoggerFactory.getLogger(DisplayedEnum.class);
 
     String DEFAULT_VALUE_NAME = "value";
 
@@ -38,13 +43,13 @@ public interface DisplayedEnum<T extends Enum<T>> extends java.io.Serializable {
         }
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    public static <T> T valueOfEnum(Class<T> enumClass, String value) {
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    static <T> T valueOfEnum(Class<T> enumClass, String value) {
         if (value == null)
             throw new IllegalArgumentException("DisplayedEnum value should not be null");
         if (enumClass.isAssignableFrom(DisplayedEnum.class))
             throw new IllegalArgumentException("illegal DisplayedEnum type");
-        if (!enumClass.isEnum()){
+        if (!enumClass.isEnum()) {
             throw new IllegalArgumentException(enumClass.getSimpleName() + " 必须是枚举类型");
         }
         T[] enums = enumClass.getEnumConstants();
@@ -56,16 +61,15 @@ public interface DisplayedEnum<T extends Enum<T>> extends java.io.Serializable {
         logger.warn("枚举类{} value为{}的枚举不存在", enumClass.getSimpleName(), value);
         return null;
     }
-    
-    default String display(){
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append(DEFAULT_VALUE_NAME).append(" = ").append(getValue());
-        sb.append(", ").append(DEFAULT_LABEL_NAME).append(" = ").append(getLabel());
-        sb.append("]");
-        return sb.toString();
+
+    default String display() {
+        String sb = getClass().getSimpleName() +
+                " [" +
+                DEFAULT_VALUE_NAME + " = " + getValue() +
+                ", " + DEFAULT_LABEL_NAME + " = " + getLabel() +
+                "]";
+        return sb;
     }
-    
+
 
 }

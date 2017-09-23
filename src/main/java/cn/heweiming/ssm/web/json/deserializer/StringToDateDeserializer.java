@@ -16,24 +16,29 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 
 import cn.heweiming.ssm.constant.DateFormatConstant;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:19:28
+ * @version 1.0.0
+ * @description 
+ */
 public class StringToDateDeserializer extends JsonDeserializer<Date> {
 
-	private static final Logger logger = LoggerFactory.getLogger(StringToDateDeserializer.class);
+    private static final Logger logger = LoggerFactory.getLogger(StringToDateDeserializer.class);
 
-	@Override
-	public Date deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-		String source = p.getText();
-		if (StringUtils.isEmpty(source)) {
-			return null;
-		}
-		try {
-			Date date = DateUtils.parseDate(source, DateFormatConstant.DATE_FORMAT_PATTERN);
-			return date;
-		} catch (ParseException e) {
-			logger.error("解析日期字符串 {} 失败， {} 格式不匹配", source, DateFormatConstant.DATE_FORMAT_PATTERN);
-			throw new IllegalArgumentException(
-					String.format("解析日期字符串 %s 失败， %s 格式不匹配", source, DateFormatConstant.DATE_FORMAT_PATTERN));
-		}
-	}
+    @Override
+    public Date deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+        String source = p.getText();
+        if (StringUtils.isEmpty(source)) {
+            return null;
+        }
+        try {
+            Date date = DateUtils.parseDate(source, DateFormatConstant.DATE_FORMAT_PATTERN);
+            return date;
+        } catch (ParseException e) {
+            logger.error("解析日期字符串 {} 失败， {} 格式不匹配", source, DateFormatConstant.DATE_FORMAT_PATTERN);
+            throw new IllegalArgumentException(
+                    String.format("解析日期字符串 %s 失败， %s 格式不匹配", source, DateFormatConstant.DATE_FORMAT_PATTERN));
+        }
+    }
 
 }

@@ -26,13 +26,18 @@ import cn.heweiming.ssm.constant.ConfigConstant;
 import javax.sql.DataSource;
 import java.util.concurrent.Executor;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:15:59
+ * @version 1.0.0
+ * @description 
+ */
 @Configuration
-@MapperScan(basePackages = { ConfigConstant.MAPPER_BASE_PACKAGES, ConfigConstant.DAO_BASE_PACKAGES })
-@ComponentScan(basePackages = { ConfigConstant.SCAN_BASE_PACKAGES }, excludeFilters = {
+@MapperScan(basePackages = {ConfigConstant.MAPPER_BASE_PACKAGES, ConfigConstant.DAO_BASE_PACKAGES})
+@ComponentScan(basePackages = {ConfigConstant.SCAN_BASE_PACKAGES}, excludeFilters = {
         @Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class),
         @Filter(type = FilterType.ANNOTATION, value = Controller.class),
         @Filter(type = FilterType.ANNOTATION, value = RestController.class),
-        @Filter(type = FilterType.ANNOTATION, value = ControllerAdvice.class) })
+        @Filter(type = FilterType.ANNOTATION, value = ControllerAdvice.class)})
 @EnableTransactionManagement // 启注解事务管理，等同于xml配置方式的 <tx:annotation-driven />
 @EnableAspectJAutoProxy
 @EnableAsync

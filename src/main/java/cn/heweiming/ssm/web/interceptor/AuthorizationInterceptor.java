@@ -10,6 +10,11 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import cn.heweiming.ssm.web.util.JwtUserUtils;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:19:21
+ * @version 1.0.0
+ * @description 
+ */
 public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
     /**
      * Logger for this class
@@ -28,7 +33,7 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-            ModelAndView modelAndView) throws Exception {
+                           ModelAndView modelAndView) throws Exception {
         // TODO Auto-generated method stub
         super.postHandle(request, response, handler, modelAndView);
     }

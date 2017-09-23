@@ -8,6 +8,11 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.time.LocalDateTime;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:20:15
+ * @version 1.0.0
+ * @description 
+ */
 @ApiModel(value = "AjaxResponse", description = "AjaxResponse模型")
 public class AjaxResponse<T> {
 

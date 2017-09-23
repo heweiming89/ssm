@@ -16,26 +16,33 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:20:09
+ * @version 1.0.0
+ * @description 
+ */
 public class VerifyCodeUtils {
 
     //使用到Algerian字体，系统里没有的话需要安装字体，字体只显示大写，去掉了1,0,i,o几个容易混淆的字符  
     public static final String VERIFY_CODES = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
     private static Random random = new Random();
 
-    /** 
-     * 使用系统默认字符源生成验证码 
-     * @param verifySize    验证码长度 
-     * @return 
+    /**
+     * 使用系统默认字符源生成验证码
+     *
+     * @param verifySize 验证码长度
+     * @return
      */
     public static String generateVerifyCode(int verifySize) {
         return generateVerifyCode(verifySize, VERIFY_CODES);
     }
 
-    /** 
-     * 使用指定源生成验证码 
-     * @param verifySize    验证码长度 
-     * @param sources   验证码字符源 
-     * @return 
+    /**
+     * 使用指定源生成验证码
+     *
+     * @param verifySize 验证码长度
+     * @param sources    验证码字符源
+     * @return
      */
     public static String generateVerifyCode(int verifySize, String sources) {
         if (sources == null || sources.length() == 0) {
@@ -50,14 +57,15 @@ public class VerifyCodeUtils {
         return verifyCode.toString();
     }
 
-    /** 
-     * 生成随机验证码文件,并返回验证码值 
-     * @param w 
-     * @param h 
-     * @param outputFile 
-     * @param verifySize 
-     * @return 
-     * @throws IOException 
+    /**
+     * 生成随机验证码文件,并返回验证码值
+     *
+     * @param w
+     * @param h
+     * @param outputFile
+     * @param verifySize
+     * @return
+     * @throws IOException
      */
     public static String outputVerifyImage(int w, int h, File outputFile, int verifySize) throws IOException {
         String verifyCode = generateVerifyCode(verifySize);
@@ -65,14 +73,15 @@ public class VerifyCodeUtils {
         return verifyCode;
     }
 
-    /** 
-     * 输出随机验证码图片流,并返回验证码值 
-     * @param w 
-     * @param h 
-     * @param os 
-     * @param verifySize 
-     * @return 
-     * @throws IOException 
+    /**
+     * 输出随机验证码图片流,并返回验证码值
+     *
+     * @param w
+     * @param h
+     * @param os
+     * @param verifySize
+     * @return
+     * @throws IOException
      */
     public static String outputVerifyImage(int w, int h, OutputStream os, int verifySize) throws IOException {
         String verifyCode = generateVerifyCode(verifySize);
@@ -80,13 +89,14 @@ public class VerifyCodeUtils {
         return verifyCode;
     }
 
-    /** 
-     * 生成指定验证码图像文件 
-     * @param w 
-     * @param h 
-     * @param outputFile 
-     * @param code 
-     * @throws IOException 
+    /**
+     * 生成指定验证码图像文件
+     *
+     * @param w
+     * @param h
+     * @param outputFile
+     * @param code
+     * @throws IOException
      */
     public static void outputImage(int w, int h, File outputFile, String code) throws IOException {
         if (outputFile == null) {
@@ -106,13 +116,14 @@ public class VerifyCodeUtils {
         }
     }
 
-    /** 
-     * 输出指定验证码图片流 
-     * @param w 
-     * @param h 
-     * @param os 
-     * @param code 
-     * @throws IOException 
+    /**
+     * 输出指定验证码图片流
+     *
+     * @param w
+     * @param h
+     * @param os
+     * @param code
+     * @throws IOException
      */
     public static void outputImage(int w, int h, OutputStream os, String code) throws IOException {
         int verifySize = code.length();
@@ -121,8 +132,8 @@ public class VerifyCodeUtils {
         Graphics2D g2 = image.createGraphics();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         Color[] colors = new Color[5];
-        Color[] colorSpaces = new Color[] { Color.WHITE, Color.CYAN, Color.GRAY, Color.LIGHT_GRAY, Color.MAGENTA,
-                Color.ORANGE, Color.PINK, Color.YELLOW };
+        Color[] colorSpaces = new Color[]{Color.WHITE, Color.CYAN, Color.GRAY, Color.LIGHT_GRAY, Color.MAGENTA,
+                Color.ORANGE, Color.PINK, Color.YELLOW};
         float[] fractions = new float[colors.length];
         for (int i = 0; i < colors.length; i++) {
             colors[i] = colorSpaces[rand.nextInt(colorSpaces.length)];

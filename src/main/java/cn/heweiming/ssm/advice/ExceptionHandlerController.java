@@ -19,6 +19,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:14:50
+ * @version 1.0.0
+ * @description 
+ */
 @RestControllerAdvice
 @Controller
 public class ExceptionHandlerController {

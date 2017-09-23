@@ -38,14 +38,19 @@ import cn.heweiming.ssm.constant.ConfigConstant;
 import cn.heweiming.ssm.web.interceptor.AuthorizationInterceptor;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:16:15
+ * @version 1.0.0
+ * @description 
+ */
 @Configuration
-@Import(value = { JacksonConfig.class, Swagger2Config.class, ServletConfig.class })
+@Import(value = {JacksonConfig.class, Swagger2Config.class, ServletConfig.class})
 @ServletComponentScan(basePackages = ConfigConstant.LISTENER_BASE_PACKAGES)
 @EnableWebMvc // 启用 Spring MVC
-@ComponentScan(basePackages = { ConfigConstant.SCAN_BASE_PACKAGES }, useDefaultFilters = false, includeFilters = {
+@ComponentScan(basePackages = {ConfigConstant.SCAN_BASE_PACKAGES}, useDefaultFilters = false, includeFilters = {
         @Filter(type = FilterType.ANNOTATION, value = Controller.class),
         @Filter(type = FilterType.ANNOTATION, value = RestController.class),
-        @Filter(type = FilterType.ANNOTATION, value = ControllerAdvice.class) })
+        @Filter(type = FilterType.ANNOTATION, value = ControllerAdvice.class)})
 @EnableSwagger2
 public class WebContextConfig extends WebMvcConfigurerAdapter {
 
@@ -61,8 +66,7 @@ public class WebContextConfig extends WebMvcConfigurerAdapter {
 
     @Bean /* 文件上传配置 */
     public MultipartResolver multipartResolver() {
-        StandardServletMultipartResolver multipartResolver = new StandardServletMultipartResolver();
-        return multipartResolver;
+        return new StandardServletMultipartResolver();
     }
 
     @Override

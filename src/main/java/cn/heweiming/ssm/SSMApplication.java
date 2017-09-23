@@ -5,6 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:20:25
+ * @version 1.0.0
+ * @description 
+ */
 @SpringBootApplication
 public class SSMApplication {
 

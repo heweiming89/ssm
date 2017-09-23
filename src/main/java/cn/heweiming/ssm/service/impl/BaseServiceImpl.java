@@ -7,6 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:18:11
+ * @version 1.0.0
+ * @description 
+ */
 public class BaseServiceImpl<R, E, M extends BaseMapper<R, E>> implements BaseService<R, E> {
 
     @Autowired

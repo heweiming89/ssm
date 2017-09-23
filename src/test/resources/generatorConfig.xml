@@ -3,88 +3,88 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 
-	<properties resource="mbg.properties" />
+    <properties resource="mbg.properties"/>
 
-	<context id="MyBatis3" targetRuntime="cn.heweiming.ssm.mybatis.generator.GenericIntrospectedTable"
-		defaultModelType="flat">
+    <context id="MyBatis3" targetRuntime="cn.heweiming.ssm.mybatis.generator.GenericIntrospectedTable"
+             defaultModelType="flat">
 
-		<property name="javaFileEncoding" value="UTF-8" />
+        <property name="javaFileEncoding" value="UTF-8"/>
 
-		<!-- <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin"> -->
-		<!-- <property name="searchString" value="Example"/> -->
-		<!-- <property name="replaceString" value="Criteria"/> -->
-		<!-- </plugin> -->
+        <!-- <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin"> -->
+        <!-- <property name="searchString" value="Example"/> -->
+        <!-- <property name="replaceString" value="Criteria"/> -->
+        <!-- </plugin> -->
 
-		<plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin" />
-		<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
-		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
 
-		<plugin
-			type="cn.heweiming.ssm.mybatis.generator.plugins.CustomToStringPlugin" />
+        <plugin
+                type="cn.heweiming.ssm.mybatis.generator.plugins.CustomToStringPlugin"/>
 
-		<commentGenerator
-			type="org.mybatis.generator.internal.DefaultCommentGenerator">
-			<property name="suppressChineseAllComments" value="false" />
-			<property name="suppressAllComments" value="false" />
-			<property name="addRemarkComments" value="true" />
-			<property name="suppressDate" value="false" />
-		</commentGenerator>
+        <commentGenerator
+                type="org.mybatis.generator.internal.DefaultCommentGenerator">
+            <property name="suppressChineseAllComments" value="false"/>
+            <property name="suppressAllComments" value="false"/>
+            <property name="addRemarkComments" value="true"/>
+            <property name="suppressDate" value="false"/>
+        </commentGenerator>
 
-		<!-- <commentGenerator type="com.example.demo.mybatis.generator.CustomCommentGenerator"> -->
-		<!-- <property name="suppressChineseAllComments" value="false" /> -->
-		<!-- <property name="suppressAllComments" value="false" /> -->
-		<!-- <property name="addRemarkComments" value="true" /> -->
-		<!-- <property name="suppressDate" value="false" /> -->
-		<!-- </commentGenerator> -->
+        <!-- <commentGenerator type="com.example.demo.mybatis.generator.CustomCommentGenerator"> -->
+        <!-- <property name="suppressChineseAllComments" value="false" /> -->
+        <!-- <property name="suppressAllComments" value="false" /> -->
+        <!-- <property name="addRemarkComments" value="true" /> -->
+        <!-- <property name="suppressDate" value="false" /> -->
+        <!-- </commentGenerator> -->
 
-		<jdbcConnection driverClass="${jdbc.driver}"
-			connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}">
-			<property name="remarksReporting" value="true" />
-		</jdbcConnection>
+        <jdbcConnection driverClass="${jdbc.driver}"
+                        connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}">
+            <property name="remarksReporting" value="true"/>
+        </jdbcConnection>
 
-		<javaTypeResolver
-			type="cn.heweiming.ssm.mybatis.generator.internal.types.JavaTypeResolverJdk8Impl">
-		</javaTypeResolver>
+        <javaTypeResolver
+                type="cn.heweiming.ssm.mybatis.generator.internal.types.JavaTypeResolverJdk8Impl">
+        </javaTypeResolver>
 
-		<javaModelGenerator targetPackage="${modelPackage}"
-			targetProject="src/main/java" />
+        <javaModelGenerator targetPackage="${modelPackage}"
+                            targetProject="src/main/java"/>
 
-		<sqlMapGenerator targetPackage="${mapperXmlPackage}"
-			targetProject="src/main/resources">
-			<property name="enableSubPackages" value="true" />
-		</sqlMapGenerator>
+        <sqlMapGenerator targetPackage="${mapperXmlPackage}"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
 
-		<javaClientGenerator targetPackage="${mapperPackage}"
-			targetProject="src/main/java" type="XMLMAPPER" />
+        <javaClientGenerator targetPackage="${mapperPackage}"
+                             targetProject="src/main/java" type="XMLMAPPER"/>
 
-		<table tableName="t_dictionary" domainObjectName="Dictionary">
+        <table tableName="t_dictionary" domainObjectName="Dictionary">
 
-		</table>
-		<table tableName="t_login_log" domainObjectName="LoginLog">
+        </table>
+        <table tableName="t_login_log" domainObjectName="LoginLog">
 
-		</table>
-		<table tableName="t_menu" domainObjectName="Menu">
+        </table>
+        <table tableName="t_menu" domainObjectName="Menu">
 
-		</table>
-		<table tableName="t_operation_log" domainObjectName="OperationLog">
+        </table>
+        <table tableName="t_operation_log" domainObjectName="OperationLog">
 
-		</table>
-		<table tableName="t_permissions" domainObjectName="Permissions">
+        </table>
+        <table tableName="t_permissions" domainObjectName="Permissions">
 
-		</table>
-		<table tableName="t_role" domainObjectName="Role">
+        </table>
+        <table tableName="t_role" domainObjectName="Role">
 
-		</table>
-		<table tableName="t_role_menu" domainObjectName="RoleMenu">
+        </table>
+        <table tableName="t_role_menu" domainObjectName="RoleMenu">
 
-		</table>
-		<table tableName="t_role_permissions" domainObjectName="RolePermissions">
+        </table>
+        <table tableName="t_role_permissions" domainObjectName="RolePermissions">
 
-		</table>
-		<table tableName="t_user" domainObjectName="User">
+        </table>
+        <table tableName="t_user" domainObjectName="User">
 
-		</table>
+        </table>
 
-	</context>
+    </context>
 
 </generatorConfiguration>

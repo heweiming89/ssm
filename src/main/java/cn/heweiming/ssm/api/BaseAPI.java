@@ -10,6 +10,11 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import cn.heweiming.ssm.web.util.JwtUserUtils;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:15:06
+ * @version 1.0.0
+ * @description 
+ */
 public interface BaseAPI {
 
     public default String currentUser() {

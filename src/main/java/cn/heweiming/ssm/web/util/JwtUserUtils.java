@@ -22,6 +22,11 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 import cn.heweiming.ssm.properties.RSAEncryptionProperties;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:20:05
+ * @version 1.0.0
+ * @description 
+ */
 public class JwtUserUtils {
     /**
      * Logger for this class

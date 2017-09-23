@@ -8,38 +8,43 @@ import org.springframework.util.StringUtils;
 
 import cn.heweiming.ssm.enums.DisplayedEnum;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:19:07
+ * @version 1.0.0
+ * @description 
+ */
 @SuppressWarnings("rawtypes")
 public class StringToDisplayedEnumConverterFactory implements ConverterFactory<String, DisplayedEnum> {
 
-	/**
-	 * Logger for this class
-	 */
-	private static final Logger logger = LoggerFactory.getLogger(StringToDisplayedEnumConverterFactory.class);
+    /**
+     * Logger for this class
+     */
+    private static final Logger logger = LoggerFactory.getLogger(StringToDisplayedEnumConverterFactory.class);
 
-	@Override
-	public <T extends DisplayedEnum> Converter<String, T> getConverter(Class<T> targetType) {
-		return new StringToEnumConverter<T>(targetType);
-	}
+    @Override
+    public <T extends DisplayedEnum> Converter<String, T> getConverter(Class<T> targetType) {
+        return new StringToEnumConverter<T>(targetType);
+    }
 
-	private final class StringToEnumConverter<T extends DisplayedEnum> implements Converter<String, T> {
+    private final class StringToEnumConverter<T extends DisplayedEnum> implements Converter<String, T> {
 
-		private Class<T> enumType;
+        private Class<T> enumType;
 
-		public StringToEnumConverter(Class<T> enumType) {
-			this.enumType = enumType;
-		}
+        public StringToEnumConverter(Class<T> enumType) {
+            this.enumType = enumType;
+        }
 
-		public T convert(String source) {
-			if (StringUtils.isEmpty(source)) {
-				return null;
-			}
-			T displayedEnum = DisplayedEnum.valueOfEnum(this.enumType, source.trim());
-			if (displayedEnum == null) {
-				logger.warn("枚举类{} value为{}的枚举不存在", enumType.getSimpleName(), source);
-			}
-			return displayedEnum;
-		}
+        public T convert(String source) {
+            if (StringUtils.isEmpty(source)) {
+                return null;
+            }
+            T displayedEnum = DisplayedEnum.valueOfEnum(this.enumType, source.trim());
+            if (displayedEnum == null) {
+                logger.warn("枚举类{} value为{}的枚举不存在", enumType.getSimpleName(), source);
+            }
+            return displayedEnum;
+        }
 
-	}
+    }
 
 }

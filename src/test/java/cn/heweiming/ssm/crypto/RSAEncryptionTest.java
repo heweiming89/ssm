@@ -11,14 +11,14 @@ import cn.heweiming.ssm.encryption.RSAEncryption;
 
 public class RSAEncryptionTest {
 
-	@Test
-	public void test() throws NoSuchAlgorithmException {
-		KeyPair keyPair = RSAEncryption.genKeyPair(1024);
-		PublicKey publicKey = keyPair.getPublic();
-		PrivateKey privateKey = keyPair.getPrivate();
-		System.out.println(RSAEncryption.base64Key(publicKey));
-		System.out.println();
-		System.out.println(RSAEncryption.base64Key(privateKey));
-	}
+    @Test
+    public void test() throws NoSuchAlgorithmException {
+        KeyPair keyPair = RSAEncryption.genKeyPair(1024);
+        PublicKey publicKey = keyPair.getPublic();
+        PrivateKey privateKey = keyPair.getPrivate();
+        System.out.println(RSAEncryption.base64Key(publicKey));
+        System.out.println();
+        System.out.println(RSAEncryption.base64Key(privateKey));
+    }
 
 }

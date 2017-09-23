@@ -19,28 +19,27 @@ import org.springframework.util.ResourceUtils;
 
 /**
  * @author heweiming
- *
  */
 public class ProjectMyBatisGenerator {
-	/**
-	 * Logger for this class
-	 */
-	private static final Logger logger = LoggerFactory.getLogger(ProjectMyBatisGenerator.class);
+    /**
+     * Logger for this class
+     */
+    private static final Logger logger = LoggerFactory.getLogger(ProjectMyBatisGenerator.class);
 
-	public static void main(String[] args) {
-		try {
-			List<String> warnings = new ArrayList<String>();
-			boolean overwrite = true;
-			File configFile = ResourceUtils.getFile("classpath:generatorConfig.xml");
-			ConfigurationParser cp = new ConfigurationParser(warnings);
-			Configuration config = cp.parseConfiguration(configFile);
-			DefaultShellCallback callback = new DefaultShellCallback(overwrite);
-			MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
-			myBatisGenerator.generate(null);
-		} catch (IOException | XMLParserException | InvalidConfigurationException | SQLException
-				| InterruptedException e) {
-			logger.error(e.getMessage(), e);
-		}
-	}
+    public static void main(String[] args) {
+        try {
+            List<String> warnings = new ArrayList<String>();
+            boolean overwrite = true;
+            File configFile = ResourceUtils.getFile("classpath:generatorConfig.xml");
+            ConfigurationParser cp = new ConfigurationParser(warnings);
+            Configuration config = cp.parseConfiguration(configFile);
+            DefaultShellCallback callback = new DefaultShellCallback(overwrite);
+            MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
+            myBatisGenerator.generate(null);
+        } catch (IOException | XMLParserException | InvalidConfigurationException | SQLException
+                | InterruptedException e) {
+            logger.error(e.getMessage(), e);
+        }
+    }
 
 }

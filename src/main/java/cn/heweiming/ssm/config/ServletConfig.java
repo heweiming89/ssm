@@ -11,6 +11,11 @@ import org.springframework.context.annotation.Bean;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:15:51
+ * @version 1.0.0
+ * @description 
+ */
 public class ServletConfig {
 
     @Bean

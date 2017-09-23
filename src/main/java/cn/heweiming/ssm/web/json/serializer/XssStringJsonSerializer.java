@@ -8,6 +8,11 @@ import org.apache.commons.text.StringEscapeUtils;
 
 import java.io.IOException;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:19:49
+ * @version 1.0.0
+ * @description 
+ */
 public class XssStringJsonSerializer extends JsonSerializer<String> {
 
     @Override

@@ -5,6 +5,11 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:19:56
+ * @version 1.0.0
+ * @description 
+ */
 public class JWTPayload {
 
 	/*
@@ -38,7 +43,7 @@ public class JWTPayload {
 
     @JsonProperty(ISSUED_AT)
     private LocalDateTime issuedAt;// jwt的签发时间
-    
+
     @JsonProperty(EXPIRES_AT)
     private LocalDateTime expiresAt;// jwt的过期时间，这个过期时间必须要大于签发时间
 

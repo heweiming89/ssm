@@ -12,6 +12,11 @@ import org.springframework.util.StringUtils;
 import cn.heweiming.ssm.constant.DateFormatConstant;
 
 
+/**
+ * @author heweiming  2017年9月23日 下午5:19:03
+ * @version 1.0.0
+ * @description 
+ */
 public class StringToDateConvert implements Converter<String, Date> {
 
     private static final Logger logger = LoggerFactory.getLogger(StringToDateConvert.class);
@@ -30,5 +35,5 @@ public class StringToDateConvert implements Converter<String, Date> {
                     String.format("解析日期字符串 %s 失败， %s 格式不匹配", source, DateFormatConstant.DATE_FORMAT_PATTERN));
         }
     }
-    
+
 }

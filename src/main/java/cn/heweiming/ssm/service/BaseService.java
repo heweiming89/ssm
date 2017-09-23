@@ -4,6 +4,11 @@ import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:18:01
+ * @version 1.0.0
+ * @description 
+ */
 public interface BaseService<R, E> {
 
     long countByExample(E example);

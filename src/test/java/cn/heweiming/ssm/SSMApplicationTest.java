@@ -22,6 +22,11 @@ import com.auth0.jwt.algorithms.Algorithm;
 
 import cn.heweiming.ssm.properties.RSAEncryptionProperties;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:20:39
+ * @version 1.0.0
+ * @description 
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 // @ActiveProfiles(profiles = { "default", "test" })

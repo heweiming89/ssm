@@ -7,9 +7,10 @@ import java.util.List;
 
 import cn.heweiming.ssm.util.ToStringUtils;
 
-
 /**
- * Created by heweiming on 2017/5/17.
+ * @author heweiming  2017年9月23日 下午5:15:14
+ * @version 1.0.0
+ * @description 
  */
 @ApiModel(value = "Page", description = "Page模型")
 public class Page<T> {

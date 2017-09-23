@@ -1,9 +1,14 @@
 package cn.heweiming.ssm.exception;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:16:56
+ * @version 1.0.0
+ * @description 
+ */
 public abstract class BaseException extends Exception {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 1L;
 

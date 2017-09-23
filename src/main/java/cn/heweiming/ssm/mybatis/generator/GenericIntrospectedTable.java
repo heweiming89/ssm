@@ -18,63 +18,68 @@ import org.mybatis.generator.codegen.AbstractJavaGenerator;
 import org.mybatis.generator.codegen.mybatis3.IntrospectedTableMyBatis3Impl;
 import org.mybatis.generator.config.PropertyRegistry;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:17:25
+ * @version 1.0.0
+ * @description 
+ */
 public class GenericIntrospectedTable extends IntrospectedTableMyBatis3Impl {
 
-	@Override
-	public List<GeneratedJavaFile> getGeneratedJavaFiles() {
-		List<GeneratedJavaFile> answer = new ArrayList<GeneratedJavaFile>();
+    @Override
+    public List<GeneratedJavaFile> getGeneratedJavaFiles() {
+        List<GeneratedJavaFile> answer = new ArrayList<GeneratedJavaFile>();
 
-		for (AbstractJavaGenerator javaGenerator : javaModelGenerators) {
-			List<CompilationUnit> compilationUnits = javaGenerator.getCompilationUnits();
-			for (CompilationUnit compilationUnit : compilationUnits) {
-				GeneratedJavaFile gjf = new GeneratedJavaFile(compilationUnit,
-						context.getJavaModelGeneratorConfiguration().getTargetProject(),
-						context.getProperty(PropertyRegistry.CONTEXT_JAVA_FILE_ENCODING), context.getJavaFormatter());
-				answer.add(gjf);
-			}
-		}
+        for (AbstractJavaGenerator javaGenerator : javaModelGenerators) {
+            List<CompilationUnit> compilationUnits = javaGenerator.getCompilationUnits();
+            for (CompilationUnit compilationUnit : compilationUnits) {
+                GeneratedJavaFile gjf = new GeneratedJavaFile(compilationUnit,
+                        context.getJavaModelGeneratorConfiguration().getTargetProject(),
+                        context.getProperty(PropertyRegistry.CONTEXT_JAVA_FILE_ENCODING), context.getJavaFormatter());
+                answer.add(gjf);
+            }
+        }
 
-		for (AbstractJavaGenerator javaGenerator : clientGenerators) {
-			List<CompilationUnit> compilationUnits = javaGenerator.getCompilationUnits();
-			for (CompilationUnit compilationUnit : compilationUnits) {
+        for (AbstractJavaGenerator javaGenerator : clientGenerators) {
+            List<CompilationUnit> compilationUnits = javaGenerator.getCompilationUnits();
+            for (CompilationUnit compilationUnit : compilationUnits) {
 
-				FullyQualifiedJavaType javaType = compilationUnit.getType();
+                FullyQualifiedJavaType javaType = compilationUnit.getType();
 
-				Set<FullyQualifiedJavaType> importedTypes = compilationUnit.getImportedTypes();
-				Iterator<FullyQualifiedJavaType> iterator = importedTypes.iterator();
-				FullyQualifiedJavaType model = iterator.next();
-				FullyQualifiedJavaType example = iterator.next();
+                Set<FullyQualifiedJavaType> importedTypes = compilationUnit.getImportedTypes();
+                Iterator<FullyQualifiedJavaType> iterator = importedTypes.iterator();
+                FullyQualifiedJavaType model = iterator.next();
+                FullyQualifiedJavaType example = iterator.next();
 
-				String baseMapperPackage = "cn.heweiming.ssm.mybatis.base";
-				String baseMapperName = "BaseMapper";
+                String baseMapperPackage = "cn.heweiming.ssm.mybatis.base";
+                String baseMapperName = "BaseMapper";
 
-				String modelName = model.getShortName();
-				String exampleName = example.getShortName();
+                String modelName = model.getShortName();
+                String exampleName = example.getShortName();
 
-				String fullTypeSpecification = String.format(baseMapperName + "<%s, %s>", modelName, exampleName);
+                String fullTypeSpecification = String.format(baseMapperName + "<%s, %s>", modelName, exampleName);
 
-				FullyQualifiedJavaType superInterface = new FullyQualifiedJavaType(fullTypeSpecification);
-				FullyQualifiedJavaType baseMapper = new FullyQualifiedJavaType(
-						baseMapperPackage + "." + baseMapperName);
+                FullyQualifiedJavaType superInterface = new FullyQualifiedJavaType(fullTypeSpecification);
+                FullyQualifiedJavaType baseMapper = new FullyQualifiedJavaType(
+                        baseMapperPackage + "." + baseMapperName);
 
-				Interface api = new Interface(javaType);
-				api.setVisibility(JavaVisibility.PUBLIC);
-				api.addSuperInterface(superInterface);
-				api.addImportedTypes(new LinkedHashSet<>(Arrays.asList(model, example, baseMapper)));
-				
-				api.addJavaDocLine("/**");
-				api.addJavaDocLine(" * @createdBy MyBatis Generator");
-				api.addJavaDocLine(" * @createdDate " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-				api.addJavaDocLine(" */");
-				
-				GeneratedJavaFile gjf = new GeneratedJavaFile(api,
-						context.getJavaClientGeneratorConfiguration().getTargetProject(),
-						context.getProperty(PropertyRegistry.CONTEXT_JAVA_FILE_ENCODING), context.getJavaFormatter());
-				answer.add(gjf);
-			}
-		}
+                Interface api = new Interface(javaType);
+                api.setVisibility(JavaVisibility.PUBLIC);
+                api.addSuperInterface(superInterface);
+                api.addImportedTypes(new LinkedHashSet<>(Arrays.asList(model, example, baseMapper)));
 
-		return answer;
-	}
+                api.addJavaDocLine("/**");
+                api.addJavaDocLine(" * @createdBy MyBatis Generator");
+                api.addJavaDocLine(" * @createdDate " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+                api.addJavaDocLine(" */");
+
+                GeneratedJavaFile gjf = new GeneratedJavaFile(api,
+                        context.getJavaClientGeneratorConfiguration().getTargetProject(),
+                        context.getProperty(PropertyRegistry.CONTEXT_JAVA_FILE_ENCODING), context.getJavaFormatter());
+                answer.add(gjf);
+            }
+        }
+
+        return answer;
+    }
 
 }

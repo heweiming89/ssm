@@ -31,6 +31,11 @@ import cn.heweiming.ssm.web.json.serializer.DisplayedEnumSerializer;
 import cn.heweiming.ssm.web.json.serializer.NullValueBeanSerializerModifier;
 import cn.heweiming.ssm.web.json.serializer.XssStringJsonSerializer;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:15:38
+ * @version 1.0.0
+ * @description 
+ */
 public class JacksonConfig {
 
     @Bean

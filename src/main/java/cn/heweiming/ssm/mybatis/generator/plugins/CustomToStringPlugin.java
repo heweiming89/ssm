@@ -12,6 +12,11 @@ import org.mybatis.generator.api.dom.java.JavaVisibility;
 import org.mybatis.generator.api.dom.java.Method;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:17:18
+ * @version 1.0.0
+ * @description 
+ */
 @SuppressWarnings("unused")
 public class CustomToStringPlugin extends PluginAdapter {
 
@@ -36,7 +41,7 @@ public class CustomToStringPlugin extends PluginAdapter {
 
     @Override
     public boolean modelRecordWithBLOBsClassGenerated(TopLevelClass topLevelClass,
-            IntrospectedTable introspectedTable) {
+                                                      IntrospectedTable introspectedTable) {
         toStringForJsonStyle(topLevelClass, introspectedTable);
         return true;
     }

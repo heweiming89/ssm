@@ -16,75 +16,80 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.heweiming.ssm.web.AjaxResponse;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:16:33
+ * @version 1.0.0
+ * @description 
+ */
 @RestController
 public class HelloWorldController {
 
-	@GetMapping(value = "/api/hello")
-	public ResponseEntity<AjaxResponse<Map<String, Object>>> helloWorld() {
-		AjaxResponse<Map<String, Object>> ajaxResponse = AjaxResponse.getInstance();
-		Map<String, Object> data = new HashMap<>();
-		data.put("date", new Date());
-		data.put("localDate", LocalDate.now());
-		data.put("localTime", LocalTime.now());
-		data.put("localDateTime", LocalDateTime.now());
-		ajaxResponse.setData(data);
-		return new ResponseEntity<>(ajaxResponse, HttpStatus.OK);
-	}
+    @GetMapping(value = "/api/hello")
+    public ResponseEntity<AjaxResponse<Map<String, Object>>> helloWorld() {
+        AjaxResponse<Map<String, Object>> ajaxResponse = AjaxResponse.getInstance();
+        Map<String, Object> data = new HashMap<>();
+        data.put("date", new Date());
+        data.put("localDate", LocalDate.now());
+        data.put("localTime", LocalTime.now());
+        data.put("localDateTime", LocalDateTime.now());
+        ajaxResponse.setData(data);
+        return new ResponseEntity<>(ajaxResponse, HttpStatus.OK);
+    }
 
-	@GetMapping(value = "/user")
-	public User user() {
-		User user = new User();
-		user.setAge((byte) 11);
-		user.setId(11111);
-		user.setShouru(88888.88);
-		user.setUsername("张三");
-		return user;
-	}
+    @GetMapping(value = "/user")
+    public User user() {
+        User user = new User();
+        user.setAge((byte) 11);
+        user.setId(11111);
+        user.setShouru(88888.88);
+        user.setUsername("张三");
+        return user;
+    }
 
-	public static class User {
+    public static class User {
 
-		private Integer id;
-		private String username;
-		private Byte age;
-		private Double shouru;
+        private Integer id;
+        private String username;
+        private Byte age;
+        private Double shouru;
 
-		public Integer getId() {
-			return id;
-		}
+        public Integer getId() {
+            return id;
+        }
 
-		public void setId(Integer id) {
-			this.id = id;
-		}
+        public void setId(Integer id) {
+            this.id = id;
+        }
 
-		public String getUsername() {
-			return username;
-		}
+        public String getUsername() {
+            return username;
+        }
 
-		public void setUsername(String username) {
-			this.username = username;
-		}
+        public void setUsername(String username) {
+            this.username = username;
+        }
 
-		public Byte getAge() {
-			return age;
-		}
+        public Byte getAge() {
+            return age;
+        }
 
-		public void setAge(Byte age) {
-			this.age = age;
-		}
+        public void setAge(Byte age) {
+            this.age = age;
+        }
 
-		public Double getShouru() {
-			return shouru;
-		}
+        public Double getShouru() {
+            return shouru;
+        }
 
-		public void setShouru(Double shouru) {
-			this.shouru = shouru;
-		}
+        public void setShouru(Double shouru) {
+            this.shouru = shouru;
+        }
 
-		@Override
-		public String toString() {
-			return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
-		}
+        @Override
+        public String toString() {
+            return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
+        }
 
-	}
+    }
 
 }

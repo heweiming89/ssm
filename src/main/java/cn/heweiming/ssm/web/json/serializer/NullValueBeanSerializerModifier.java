@@ -8,30 +8,35 @@ import com.fasterxml.jackson.databind.SerializationConfig;
 import com.fasterxml.jackson.databind.ser.BeanPropertyWriter;
 import com.fasterxml.jackson.databind.ser.BeanSerializerModifier;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:19:42
+ * @version 1.0.0
+ * @description 
+ */
 public class NullValueBeanSerializerModifier extends BeanSerializerModifier {
 
-	protected NullValueSerializer nullNumberSerializer = new NullValueSerializer(Number.class);
-	protected NullValueSerializer nullStringSerializer = new NullValueSerializer(String.class);
-	protected NullValueSerializer nullArraySerializer = new NullValueSerializer(Array.class);
-	protected NullValueSerializer nullBooleanSerializer = new NullValueSerializer(Boolean.class);
+    protected NullValueSerializer nullNumberSerializer = new NullValueSerializer(Number.class);
+    protected NullValueSerializer nullStringSerializer = new NullValueSerializer(String.class);
+    protected NullValueSerializer nullArraySerializer = new NullValueSerializer(Array.class);
+    protected NullValueSerializer nullBooleanSerializer = new NullValueSerializer(Boolean.class);
 
-	@Override
-	public List<BeanPropertyWriter> changeProperties(SerializationConfig config, BeanDescription beanDesc,
-			List<BeanPropertyWriter> beanProperties) {
-		for (BeanPropertyWriter beanPropertyWriter : beanProperties) {
-			Class<?> propertyType = beanPropertyWriter.getType().getRawClass();
-			if (NullValueSerializer.isArrayType(propertyType)) {
-				beanPropertyWriter.assignNullSerializer(nullArraySerializer);
-			} else if (NullValueSerializer.isNumberType(propertyType)) {
-				beanPropertyWriter.assignNullSerializer(nullNumberSerializer);
-			} else if (NullValueSerializer.isBooleanType(propertyType)) {
-				beanPropertyWriter.assignNullSerializer(nullBooleanSerializer);
-			} else if (NullValueSerializer.isStringType(propertyType)) {
-				beanPropertyWriter.assignNullSerializer(nullStringSerializer);
-			}
-		}
-		return super.changeProperties(config, beanDesc, beanProperties);
+    @Override
+    public List<BeanPropertyWriter> changeProperties(SerializationConfig config, BeanDescription beanDesc,
+                                                     List<BeanPropertyWriter> beanProperties) {
+        for (BeanPropertyWriter beanPropertyWriter : beanProperties) {
+            Class<?> propertyType = beanPropertyWriter.getType().getRawClass();
+            if (NullValueSerializer.isArrayType(propertyType)) {
+                beanPropertyWriter.assignNullSerializer(nullArraySerializer);
+            } else if (NullValueSerializer.isNumberType(propertyType)) {
+                beanPropertyWriter.assignNullSerializer(nullNumberSerializer);
+            } else if (NullValueSerializer.isBooleanType(propertyType)) {
+                beanPropertyWriter.assignNullSerializer(nullBooleanSerializer);
+            } else if (NullValueSerializer.isStringType(propertyType)) {
+                beanPropertyWriter.assignNullSerializer(nullStringSerializer);
+            }
+        }
+        return super.changeProperties(config, beanDesc, beanProperties);
 
-	}
+    }
 
 }

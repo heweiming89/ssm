@@ -5,6 +5,11 @@ import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:17:07
+ * @version 1.0.0
+ * @description 
+ */
 public interface BaseMapper<R, E> {
 
     long countByExample(E example);

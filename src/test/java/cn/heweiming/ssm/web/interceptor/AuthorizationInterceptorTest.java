@@ -6,7 +6,7 @@ public class AuthorizationInterceptorTest {
 
     @Test
     public void test() {
-        
+
     }
 
 }

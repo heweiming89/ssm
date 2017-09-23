@@ -26,6 +26,11 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * @author heweiming  2017年9月23日 下午5:15:23
+ * @version 1.0.0
+ * @description 
+ */
 @Configuration
 @EnableCaching // 启用缓存，这个注解很重要；
 public class CacheConfig extends CachingConfigurerSupport {
@@ -91,6 +96,7 @@ public class CacheConfig extends CachingConfigurerSupport {
 
     /**
      * 操作Redis String（或者Value）类型数据
+     *
      * @return
      */
     @Bean
@@ -101,6 +107,7 @@ public class CacheConfig extends CachingConfigurerSupport {
 
     /**
      * 操作Redis List类型数据
+     *
      * @return
      */
     @Bean
@@ -111,6 +118,7 @@ public class CacheConfig extends CachingConfigurerSupport {
 
     /**
      * 操作Redis Set类型数据
+     *
      * @return
      */
     @Bean
@@ -121,6 +129,7 @@ public class CacheConfig extends CachingConfigurerSupport {
 
     /**
      * 操作Redis ZSet（或者Sorted Set）类型数据
+     *
      * @return
      */
     @Bean
@@ -131,6 +140,7 @@ public class CacheConfig extends CachingConfigurerSupport {
 
     /**
      * 操作Redis Hash类型数据
+     *
      * @return
      */
     @Bean
