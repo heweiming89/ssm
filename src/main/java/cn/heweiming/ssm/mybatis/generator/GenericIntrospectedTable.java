@@ -1,7 +1,9 @@
 package cn.heweiming.ssm.mybatis.generator;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -55,12 +57,17 @@ public class GenericIntrospectedTable extends IntrospectedTableMyBatis3Impl {
 				FullyQualifiedJavaType baseMapper = new FullyQualifiedJavaType(
 						baseMapperPackage + "." + baseMapperName);
 
-				Interface face = new Interface(javaType);
-				face.setVisibility(JavaVisibility.PUBLIC);
-				face.addSuperInterface(superInterface);
-				face.addImportedTypes(new LinkedHashSet<>(Arrays.asList(model, example, baseMapper)));
-
-				GeneratedJavaFile gjf = new GeneratedJavaFile(face,
+				Interface api = new Interface(javaType);
+				api.setVisibility(JavaVisibility.PUBLIC);
+				api.addSuperInterface(superInterface);
+				api.addImportedTypes(new LinkedHashSet<>(Arrays.asList(model, example, baseMapper)));
+				
+				api.addJavaDocLine("/**");
+				api.addJavaDocLine(" * @createdBy MyBatis Generator");
+				api.addJavaDocLine(" * @createdDate " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+				api.addJavaDocLine(" */");
+				
+				GeneratedJavaFile gjf = new GeneratedJavaFile(api,
 						context.getJavaClientGeneratorConfiguration().getTargetProject(),
 						context.getProperty(PropertyRegistry.CONTEXT_JAVA_FILE_ENCODING), context.getJavaFormatter());
 				answer.add(gjf);

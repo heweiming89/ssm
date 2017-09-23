@@ -17,6 +17,10 @@ import org.mybatis.generator.exception.XMLParserException;
 import org.mybatis.generator.internal.DefaultShellCallback;
 import org.springframework.util.ResourceUtils;
 
+/**
+ * @author heweiming
+ *
+ */
 public class ProjectMyBatisGenerator {
 	/**
 	 * Logger for this class
