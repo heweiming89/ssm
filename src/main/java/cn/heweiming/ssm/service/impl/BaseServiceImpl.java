@@ -4,6 +4,7 @@ import cn.heweiming.ssm.mybatis.base.BaseMapper;
 import cn.heweiming.ssm.service.BaseService;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,21 +24,25 @@ public class BaseServiceImpl<R, E, M extends BaseMapper<R, E>> implements BaseSe
     }
 
     @Override
+    @Transactional
     public int deleteByExample(E example) {
         return mapper.deleteByExample(example);
     }
 
     @Override
+    @Transactional
     public int deleteByPrimaryKey(Integer id) {
         return mapper.deleteByPrimaryKey(id);
     }
 
     @Override
+    @Transactional
     public int insert(R record) {
         return mapper.insert(record);
     }
 
     @Override
+    @Transactional
     public int insertSelective(R record) {
         return mapper.insertSelective(record);
     }
@@ -58,21 +63,25 @@ public class BaseServiceImpl<R, E, M extends BaseMapper<R, E>> implements BaseSe
     }
 
     @Override
+    @Transactional
     public int updateByExampleSelective(R record, E example) {
         return mapper.updateByExampleSelective(record, example);
     }
 
     @Override
+    @Transactional
     public int updateByExample(R record, E example) {
         return mapper.updateByExample(record, example);
     }
 
     @Override
+    @Transactional
     public int updateByPrimaryKeySelective(R record) {
         return mapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
+    @Transactional
     public int updateByPrimaryKey(R record) {
         return mapper.updateByPrimaryKey(record);
     }
